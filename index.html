@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>깃허브 블로그</title>
+
   <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
   <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+
   <!-- 신택스 하이라이터 플러그인 라이브러리 시작 -->
   <link rel="stylesheet"
     href="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight.min.css">
@@ -14,26 +17,32 @@
     src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
   <!-- 신택스 하이라이터 플러그인 라이브러리 끝 -->
+
   <!-- katex 플러그인 라이브러리 시작 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.13/katex.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.13/katex.min.css">
   <!-- katex 플러그인 라이브러리 끝 -->
+
   <!-- uml 플러그인 라이브러리 시작 -->
   <script src="https://uicdn.toast.com/editor-plugin-uml/latest/toastui-editor-plugin-uml.min.js"></script>
   <!-- uml 플러그인 라이브러리 끝 -->
+
   <style>
     body {
       margin: 0;
     }
+
     @font-face {
       font-family: "GmarketSansMedium";
       src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
       font-weight: normal;
       font-style: normal;
     }
+
     #viewer-1 {
       padding: 0 10px;
     }
+
     html>body,
     html>body .toastui-editor-contents,
     html>body .toastui-editor-contents code,
@@ -41,6 +50,7 @@
       font-family: "GmarketSansMedium";
     }
   </style>
+
 </head>
 
 <body>
@@ -48,6 +58,7 @@
   <div id="viewer-1"></div>
 
   <ul>
+    <li><a href="javascript:showPage(4);">4번글</a></li>
     <li><a href="javascript:showPage(3);">3번글</a></li>
     <li><a href="javascript:showPage(2);">2번글</a></li>
     <li><a href="javascript:showPage(1);">1번글</a></li>
@@ -60,9 +71,11 @@
       const toHTMLRenderers = {
         katex(node) {
           console.log("HI");
+
           let html = katex.renderToString(node.literal, {
             throwOnError: false
           });
+
           return [
             { type: "openTag", tagName: "div", outerNewLine: true },
             { type: "html", content: html },
@@ -70,8 +83,12 @@
           ];
         }
       };
+
       return { toHTMLRenderers };
     }
+
+    const viewer1MarkdownSource = "로딩중...";
+
     const viewer1 = Editor.factory({
       el: document.querySelector("#viewer-1"),
       viewer: true,
@@ -98,6 +115,8 @@
           });
         })
     }
+
+    showPage(4);
 
   </script>
 
